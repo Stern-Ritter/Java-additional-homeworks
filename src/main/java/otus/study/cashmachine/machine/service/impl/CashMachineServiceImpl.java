@@ -28,7 +28,7 @@ public class CashMachineServiceImpl implements CashMachineService {
     @Override
     public List<Integer> getMoney(CashMachine machine, String cardNum, String pin, BigDecimal amount) {
         try {
-            BigDecimal sum = cardService.getMoney(cardNum, pin, amount);
+            cardService.getMoney(cardNum, pin, amount);
             return moneyBoxService.getMoney(machine.getMoneyBox(), amount.intValue());
         } catch (Exception e) {
             cardService.putMoney(cardNum, pin, amount);
